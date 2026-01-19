@@ -1,6 +1,6 @@
 import { navItems } from "../data/data";
 
-function Sidebar({ activePage, onPageChange }) {
+function Sidebar({ activePage, onPageChange, onLogout }) {
   return (
     <aside className="sidebar">
       <h2 className="brand">Admin</h2>
@@ -15,6 +15,9 @@ function Sidebar({ activePage, onPageChange }) {
               {item.label}
             </li>
           ))}
+          <li className="nav-item logout" onClick={onLogout}>
+            Logout
+          </li>
         </ul>
       </nav>
     </aside>
