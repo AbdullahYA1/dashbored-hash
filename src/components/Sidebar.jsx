@@ -1,11 +1,6 @@
-function Sidebar({ activePage, onPageChange }) {
-  const navItems = [
-    { id: "dashboard", label: "Dashboard" },
-    { id: "products", label: "Products" },
-    { id: "orders", label: "Orders" },
-    { id: "users", label: "Users" },
-  ];
+import { navItems } from "../data/data";
 
+function Sidebar({ activePage, onPageChange, onLogout }) {
   return (
     <aside className="sidebar">
       <h2 className="brand">Admin</h2>
@@ -22,6 +17,9 @@ function Sidebar({ activePage, onPageChange }) {
               {item.label}
             </li>
           ))}
+          <li className="nav-item logout" onClick={onLogout}>
+            Logout
+          </li>
         </ul>
       </nav>
     </aside>
