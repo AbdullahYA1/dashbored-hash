@@ -2,6 +2,7 @@ import StatCard from "./StatCard";
 import ProductsPage from "./ProductsPage";
 import OrdersPage from "./OrdersPage";
 import OrderStatus from "./OrderStatus";
+import ProductApi from "./ProductApi";
 import { productsData, productsOrders } from "../data/data";
 
 function MainContent({ activePage }) {
@@ -33,6 +34,14 @@ function MainContent({ activePage }) {
       </main>
     );
   }
+
+  if (activePage === "FetchProduct") {
+    return (
+      <main className="main-content">
+        <ProductApi />
+      </main>
+    );
+  } 
 
   return (
     <main className="main-content">

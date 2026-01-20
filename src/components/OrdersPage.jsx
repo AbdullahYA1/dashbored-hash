@@ -36,10 +36,10 @@ function OrdersPage() {
                 </span>
               </td>
               <td>
-                <button className="btn-delete" onClick={() => deleteOrder(order.id)}>
-                  Delete
-                </button>
-                <button className="btn-edit " onClick={() => editOrder(order.id)}>Edit</button>
+               <div>
+                <i style={{ padding: "0 8px"  }} className="fas fa-eye"></i>
+                <i onClick={() => editOrder(order.id)} className="fas fa-edit"></i>
+               </div>
               </td>
             </tr>
           ))}

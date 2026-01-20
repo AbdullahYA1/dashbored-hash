@@ -12,6 +12,7 @@ function LoginPage({ setIsLoggedIn }) {
 
     // Simple login check
     if (email === "admin@admin.com" && password === "123456") {
+      localStorage.setItem("isLoggedIn", "true");
       setIsLoggedIn(true);
       navigate("/dashboard");
     } else {

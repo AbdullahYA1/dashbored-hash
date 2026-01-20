@@ -14,6 +14,7 @@ function DashboardLayout({ setIsLoggedIn }) {
   };
 
   const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn");
     setIsLoggedIn(false);
     navigate("/login");
   };

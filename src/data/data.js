@@ -4,6 +4,8 @@ export const navItems = [
   { id: "products", label: "Products" },
   { id: "orders", label: "Orders" },
   { id: "users", label: "Users" },
+  { id: "FetchProduct", label: "Fetch Product" },
+
 ];
 
 // Products Data
