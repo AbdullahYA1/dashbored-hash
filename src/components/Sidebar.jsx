@@ -9,7 +9,9 @@ function Sidebar({ activePage, onPageChange, onLogout }) {
           {navItems.map((item) => (
             <li
               key={item.id}
-              className={activePage === item.id ? "nav-item active" : "nav-item"}
+              className={
+                activePage === item.id ? "nav-item active" : "nav-item"
+              }
               onClick={() => onPageChange(item.id)}
             >
               {item.label}
