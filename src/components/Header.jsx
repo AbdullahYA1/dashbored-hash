@@ -5,7 +5,7 @@ function Header({ onToggleSidebar }) {
         Menu
       </button>
       <div className="user-info">
-        <span>Abod</span>
+        <span>Admin</span>
       </div>
     </header>
   );
