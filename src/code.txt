@@ -1,0 +1,192 @@
+//   const [city, setCity] = useState("");
+//   const [weather, setWeather] = useState(null);
+//   const [error, setError] = useState("");
+//   const [loading, setLoading] = useState(false);
+
+//   const getWeatherIcon = (code) => {
+//     if (code === 0) return <Sun size={64} color="#facc15" />;
+//     if (code <= 3) return <Cloud size={64} color="#a3a3a3" />;
+//     if (code <= 67) return <CloudRain size={64} color="#3b82f6" />;
+//     if (code <= 77) return <CloudSnow size={64} color="#60a5fa" />;
+//     return <Cloud size={64} color="#64748b" />;
+//   };
+
+//   const getWeatherDescription = (code) => {
+//     const descriptions = {
+//       0: "Clear sky", 1: "Mainly clear", 2: "Partly cloudy", 3: "Overcast",
+//       45: "Foggy", 48: "Depositing rime fog", 51: "Light drizzle", 53: "Moderate drizzle",
+//       55: "Dense drizzle", 61: "Slight rain", 63: "Moderate rain", 65: "Heavy rain",
+//       71: "Slight snow", 73: "Moderate snow", 75: "Heavy snow", 77: "Snow grains",
+//       80: "Slight rain showers", 81: "Moderate rain showers", 82: "Violent rain showers",
+//       85: "Slight snow showers", 86: "Heavy snow showers", 95: "Thunderstorm",
+//       96: "Thunderstorm with slight hail", 99: "Thunderstorm with heavy hail"
+//     };
+//     return descriptions[code] || "Unknown";
+//   };
+
+//   const getWeather = async () => {
+//     if (!city.trim()) {
+//       setError("Please enter a city name");
+//       return;
+//     }
+//     setError("");
+//     setWeather(null);
+//     setLoading(true);
+//     try {
+//       const geoUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1&language=en&format=json`;
+//       const geoResponse = await fetch(geoUrl);
+//       const geoData = await geoResponse.json();
+//       if (!geoData.results || geoData.results.length === 0) {
+//         setError("City not found. Please check the spelling and try again.");
+//         setLoading(false);
+//         return;
+//       }
+//       const location = geoData.results[0];
+//       const { latitude, longitude, name, country, timezone } = location;
+//       const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&hourly=temperature_2m,relativehumidity_2m,visibility,pressure_msl&timezone=${timezone}`;
+//       const weatherResponse = await fetch(weatherUrl);
+//       const weatherData = await weatherResponse.json();
+//       const currentHour = new Date().getHours();
+//       setWeather({
+//         current: weatherData.current_weather,
+//         humidity: weatherData.hourly.relativehumidity_2m[currentHour],
+//         visibility: weatherData.hourly.visibility[currentHour],
+//         pressure: weatherData.hourly.pressure_msl[currentHour],
+//         cityName: name,
+//         country: country
+//       });
+//     } catch (err) {
+//       setError("Failed to fetch weather data. Please try again.");
+//       console.error(err);
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   const handleKeyPress = (e) => {
+//     if (e.key === 'Enter') {
+//       getWeather();
+//     }
+//   };
+
+//   const searchCity = (cityName) => {
+//     setCity(cityName);
+//     setError("");
+//   };
+
+//   return (
+//     <div className="container py-5">
+//       <div className="row justify-content-center">
+//         <div className="col-md-7">
+//           <div className="card shadow-lg mb-4">
+//             <div className="card-body">
+//               <h1 className="card-title h3 text-center mb-4 d-flex align-items-center justify-content-center gap-2">
+//                 <Cloud size={32} /> Weather Forecast
+//               </h1>
+//               <div className="input-group mb-3">
+//                 <input
+//                   type="text"
+//                   className="form-control"
+//                   placeholder="Enter any city name..."
+//                   value={city}
+//                   onChange={e => setCity(e.target.value)}
+//                   onKeyPress={handleKeyPress}
+//                 />
+//                 <button
+//                   className="btn btn-primary"
+//                   onClick={getWeather}
+//                   disabled={loading}
+//                 >
+//                   {loading ? <Loader2 size={20} className="spinner-border spinner-border-sm" /> : "Search"}
+//                 </button>
+//               </div>
+//               {error && (
+//                 <div className="alert alert-danger mt-2" role="alert">
+//                   {error}
+//                 </div>
+//               )}
+//             </div>
+//           </div>
+
+//           {weather && (
+//             <div className="card shadow-lg mb-4">
+//               <div className="card-body">
+//                 <div className="text-center mb-3">
+//                   <div className="d-flex align-items-center justify-content-center gap-2 mb-2">
+//                     <MapPin size={24} />
+//                     <span className="h4 mb-0">{weather.cityName}</span>
+//                   </div>
+//                   <div className="text-muted">{weather.country}</div>
+//                   <div className="small text-secondary mb-2">
+//                     {new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+//                   </div>
+//                 </div>
+//                 <div className="text-center mb-4">
+//                   {getWeatherIcon(weather.current.weathercode)}
+//                   <div className="display-4 fw-bold mt-2">{Math.round(weather.current.temperature)}°C</div>
+//                   <div className="lead mb-2">{getWeatherDescription(weather.current.weathercode)}</div>
+//                 </div>
+//                 <div className="row g-3">
+//                   <div className="col-6">
+//                     <div className="bg-light rounded p-3 d-flex align-items-center gap-2">
+//                       <Wind size={28} />
+//                       <div>
+//                         <div className="small text-muted">Wind Speed</div>
+//                         <div className="fw-semibold">{weather.current.windspeed} km/h</div>
+//                       </div>
+//                     </div>
+//                   </div>
+//                   <div className="col-6">
+//                     <div className="bg-light rounded p-3 d-flex align-items-center gap-2">
+//                       <Droplets size={28} />
+//                       <div>
+//                         <div className="small text-muted">Humidity</div>
+//                         <div className="fw-semibold">{weather.humidity}%</div>
+//                       </div>
+//                     </div>
+//                   </div>
+//                   <div className="col-6">
+//                     <div className="bg-light rounded p-3 d-flex align-items-center gap-2">
+//                       <Eye size={28} />
+//                       <div>
+//                         <div className="small text-muted">Visibility</div>
+//                         <div className="fw-semibold">{(weather.visibility / 1000).toFixed(1)} km</div>
+//                       </div>
+//                     </div>
+//                   </div>
+//                   <div className="col-6">
+//                     <div className="bg-light rounded p-3 d-flex align-items-center gap-2">
+//                       <Gauge size={28} />
+//                       <div>
+//                         <div className="small text-muted">Pressure</div>
+//                         <div className="fw-semibold">{Math.round(weather.pressure)} hPa</div>
+//                       </div>
+//                     </div>
+//                   </div>
+//                 </div>
+//               </div>
+//             </div>
+//           )}
+
+//           {!weather && !loading && (
+//             <div className="card shadow-lg">
+//               <div className="card-body">
+//                 <div className="mb-2 text-center text-muted">Popular cities:</div>
+//                 <div className="d-flex flex-wrap gap-2 justify-content-center">
+//                   {["Cairo", "London", "Paris", "New York", "Tokyo", "Dubai", "Sydney", "Riyadh"].map(cityName => (
+//                     <button
+//                       key={cityName}
+//                       onClick={() => searchCity(cityName)}
+//                       className="btn btn-outline-primary btn-sm rounded-pill"
+//                     >
+//                       {cityName}
+//                     </button>
+//                   ))}
+//                 </div>
+//               </div>
+//             </div>
+//           )}
+//         </div>
+//       </div>
+//     </div>
+//   );

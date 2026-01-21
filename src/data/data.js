@@ -5,6 +5,8 @@ export const navItems = [
   { id: "orders", label: "Orders" },
   { id: "users", label: "Users" },
   { id: "FetchProduct", label: "Fetch Product" },
+  { id: "WeatherApi", label: "Weather API" },
+  { id: "WeatherSimple", label: "Weather Simple App" }
 
 ];
 

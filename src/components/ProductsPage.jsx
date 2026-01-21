@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { productsData } from "../data/data";
+import Modal from "./Modal";
 
 function ProductsPage() {
   const [products, setProducts] = useState(productsData);
@@ -78,64 +79,14 @@ function ProductsPage() {
 
   return (
     <>
-      {showForm && (
-        <div className="modal-overlay">
-          <div className="modal">
-            <h3>{editingProduct ? "Edit Product" : "Add Product"}</h3>
-            <form onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label>Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label>Category</label>
-                <input
-                  type="text"
-                  name="category"
-                  value={formData.category}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label>Price</label>
-                <input
-                  type="number"
-                  name="price"
-                  value={formData.price}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label>Stock</label>
-                <input
-                  type="number"
-                  name="stock"
-                  value={formData.stock}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div className="form-buttons">
-                <button type="submit" className="btn-add">
-                  {editingProduct ? "Update" : "Add"}
-                </button>
-                <button type="button" className="btn-cancel" onClick={closeForm}>
-                  Cancel
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
-
+    <Modal
+      showForm={showForm}
+      editingProduct={editingProduct}
+      formData={formData}
+      handleInputChange={handleInputChange}
+      handleSubmit={handleSubmit}
+      closeForm={closeForm}
+    />
       <div className={showForm ? "page-blur" : ""}>
         <div className="page-header">
           <h2>Products</h2>
