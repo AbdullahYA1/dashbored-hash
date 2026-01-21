@@ -3,6 +3,8 @@ import ProductsPage from "./ProductsPage";
 import OrdersPage from "./OrdersPage";
 import OrderStatus from "./OrderStatus";
 import ProductApi from "./ProductApi";
+import WeatherApi from "./WeatherApi";
+import WeatherSimple from "./WeatherSimple";
 import { productsData, productsOrders } from "../data/data";
 
 function MainContent({ activePage }) {
@@ -39,6 +41,20 @@ function MainContent({ activePage }) {
     return (
       <main className="main-content">
         <ProductApi />
+      </main>
+    );
+  } 
+  if (activePage === "WeatherApi") {
+    return (
+      <main className="main-content">
+        <WeatherApi />
+      </main>
+    );
+  }
+  if (activePage === "WeatherSimple") {
+    return (
+      <main className="main-content">
+        <WeatherSimple />
       </main>
     );
   } 
