@@ -1,9 +1,7 @@
 import { useState } from "react";
-import { productsData } from "../data/data";
 import Modal from "./Modal";
 
-function ProductsPage() {
-  const [products, setProducts] = useState(productsData);
+function ProductsPage({ products, setProducts }) {
   const [showForm, setShowForm] = useState(false);
   const [editingProduct, setEditingProduct] = useState(null);
   const [formData, setFormData] = useState({

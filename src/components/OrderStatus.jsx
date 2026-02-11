@@ -1,6 +1,6 @@
 function OrderStatus({ orders }) {
   const total = orders.length;
-  const completed = orders.filter((o) => o.status === "shipped").length;
+  const completed = orders.filter((o) => o.status === "completed").length;
   const pending = orders.filter((o) => o.status === "pending").length;
   const cancelled = orders.filter((o) => o.status === "cancelled").length;
 

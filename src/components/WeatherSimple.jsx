@@ -15,7 +15,7 @@ function WeatherSimple() {
   const [temperature, setTemperature] = useState("");
   const [windSpeed, setWindSpeed] = useState("");
   const [timezone, setTimezone] = useState("");
-  const [selectedCity, setSelectedCity] = useState(cityCoords);
+  const [selectedCity, setSelectedCity] = useState("cairo");
 
   useEffect(() => {
     if (!selectedCity) return;
@@ -34,7 +34,7 @@ function WeatherSimple() {
   return (
     <div>
       <div style={{ marginBottom: '1rem' }}>
-        {(cityCoords).map((city) => (
+        {Object.keys(cityCoords).map((city) => (
           <button
             key={city}
             onClick={() => setSelectedCity(city)}

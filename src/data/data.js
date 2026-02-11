@@ -20,9 +20,89 @@ export const productsData = [
 ];
 
 export const productsOrders = [
-    { id: 1, productId: 1, quantity: 2, status: "shipped" },
-    { id: 2, productId: 2, quantity: 1, status: "pending" },
-    { id: 3, productId: 3, quantity: 5, status: "shipped" },
-    { id: 4, productId: 4, quantity: 3, status: "cancelled" },
-    { id: 5, productId: 5, quantity: 1, status: "shipped" },
+    {
+        id: "ORD-001",
+        customerName: "John Smith",
+        email: "john.smith@email.com",
+        date: "2024-02-15",
+        status: "completed",
+        items: [
+            { product: "Wireless Bluetooth Headphones", qty: 1, price: 79.99 },
+            { product: "Leather Wallet", qty: 2, price: 49.99 }
+        ]
+    },
+    {
+        id: "ORD-002",
+        customerName: "Sarah Johnson",
+        email: "sarahj@email.com",
+        date: "2024-02-16",
+        status: "pending",
+        items: [
+            { product: "Fitness Watch", qty: 1, price: 199.99 }
+        ]
+    },
+    {
+        id: "ORD-003",
+        customerName: "Mike Williams",
+        email: "mikew@email.com",
+        date: "2024-02-17",
+        status: "completed",
+        items: [
+            { product: "Cotton T-Shirt", qty: 2, price: 29.99 },
+            { product: "Water Bottle", qty: 2, price: 24.99 }
+        ]
+    },
+    {
+        id: "ORD-004",
+        customerName: "Emily Davis",
+        email: "emilyd@email.com",
+        date: "2024-02-18",
+        status: "pending",
+        items: [
+            { product: "Wireless Headphones", qty: 1, price: 129.99 }
+        ]
+    },
+    {
+        id: "ORD-005",
+        customerName: "David Brown",
+        email: "davidb@email.com",
+        date: "2024-02-19",
+        status: "completed",
+        items: [
+            { product: "Fitness Watch", qty: 1, price: 199.99 },
+            { product: "Leather Wallet", qty: 1, price: 49.99 },
+            { product: "Water Bottle", qty: 2, price: 24.99 }
+        ]
+    },
+    {
+        id: "ORD-006",
+        customerName: "Lisa Anderson",
+        email: "lisaa@email.com",
+        date: "2024-02-20",
+        status: "pending",
+        items: [
+            { product: "Cotton T-Shirt", qty: 3, price: 29.99 },
+            { product: "Water Bottle", qty: 1, price: 24.99 }
+        ]
+    },
+    {
+        id: "ORD-007",
+        customerName: "James Wilson",
+        email: "jamesw@email.com",
+        date: "2024-02-21",
+        status: "cancelled",
+        items: [
+            { product: "Wireless Headphones", qty: 1, price: 79.98 }
+        ]
+    },
+    {
+        id: "ORD-008",
+        customerName: "Amanda Taylor",
+        email: "amanda1@email.com",
+        date: "2024-02-22",
+        status: "completed",
+        items: [
+            { product: "Fitness Watch", qty: 1, price: 169.98 }
+        ]
+    }
 ];

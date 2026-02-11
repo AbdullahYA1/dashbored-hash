@@ -5,26 +5,22 @@ import OrderStatus from "./OrderStatus";
 import ProductApi from "./ProductApi";
 import WeatherApi from "./WeatherApi";
 import WeatherSimple from "./WeatherSimple";
-import { productsData, productsOrders } from "../data/data";
+import { productsOrders } from "../data/data";
 
-function MainContent({ activePage }) {
-  // Calculate dynamic stats
-  const totalProducts = productsData.length;
+function MainContent({ activePage, products, setProducts }) {
+  const totalProducts = products.length;
   const totalOrders = productsOrders.length;
 
   // Calculate revenue from orders
   const revenue = productsOrders.reduce((total, order) => {
-    const product = productsData.find((p) => p.id === order.productId);
-    if (product) {
-      return total + product.price * order.quantity;
-    }
-    return total;
+    const orderTotal = order.items.reduce((sum, item) => sum + (item.qty * item.price), 0);
+    return total + orderTotal;
   }, 0);
 
   if (activePage === "products") {
     return (
       <main className="main-content">
-        <ProductsPage />
+        <ProductsPage products={products} setProducts={setProducts} />
       </main>
     );
   }

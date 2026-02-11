@@ -580,3 +580,176 @@ body {
     transform: rotate(360deg);
   }
 }
+
+/* Order Modal Styles */
+.order-modal {
+  background: #fff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 700px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: #1e3a5f;
+  font-size: 1.25rem;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #666;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-btn:hover {
+  color: #000;
+}
+
+.order-details {
+  padding: 1.5rem 2rem;
+}
+
+.detail-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.detail-item label {
+  display: block;
+  font-size: 0.875rem;
+  color: #2563eb;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.detail-item p {
+  margin: 0;
+  font-size: 1rem;
+  color: #1e3a5f;
+  font-weight: 600;
+}
+
+.order-items-section {
+  padding: 0 2rem 1.5rem;
+}
+
+.order-items-section h4 {
+  color: #1e3a5f;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.invoice-table {
+  width: 100%;
+  background: #f9fafb;
+  border-radius: 8px;
+  overflow: hidden;
+  border-collapse: collapse;
+}
+
+.invoice-table th {
+  background: #e5e7eb;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.875rem;
+}
+
+.invoice-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  color: #1e3a5f;
+}
+
+.invoice-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.invoice-table tfoot td {
+  padding: 1rem;
+  border-top: 2px solid #d1d5db;
+  background: #fff;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.btn-pending {
+  flex: 1;
+  background: #fff;
+  color: #2563eb;
+  border: 2px solid #2563eb;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.btn-pending:hover {
+  background: #eff6ff;
+}
+
+.btn-completed {
+  flex: 1;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.btn-completed:hover {
+  background: #1d4ed8;
+}
+
+.btn-cancel-order {
+  flex: 1;
+  background: #dc2626;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.btn-cancel-order:hover {
+  background: #b91c1c;
+}
+
+.badge.pending {
+  background: #fef3c7;
+  color: #d97706;
+}
