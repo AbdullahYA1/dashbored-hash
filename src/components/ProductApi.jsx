@@ -10,10 +10,10 @@ function ProductApi() {
   redirect: "follow"
 };
 
-fetch("https://dummyjson.com/products", requestOptions)
+fetch("http://localhost:8000/api/products", requestOptions)
   .then((response) => response.json())
-  .then((result) => {
-    setProducts(result.products);
+  .then((data) => {
+    setProducts(data.data);
     setLoading(false);
   })
   .catch((error) => console.error(error));
@@ -33,22 +33,22 @@ fetch("https://dummyjson.com/products", requestOptions)
         <thead>
           <tr>
             <th>ID</th>
-            <th>Product</th>
+            <th>Name</th>
             <th>Category</th>
             <th>Price</th>
             <th>Stock</th>
-            <th>Rating</th>
+            <th>Active</th>
           </tr>
         </thead>
         <tbody>
           {products.map((product) => (
             <tr key={product.id}>
               <td>{product.id}</td>
-              <td>{product.title}</td>
+              <td>{product.name}</td>
               <td>{product.category}</td>
               <td>${product.price}</td>
               <td>{product.stock}</td>
-              <td>{product.rating}</td>
+              <td>{product.active ? "Yes" : "No"}</td>
             </tr>
           ))}
         </tbody>

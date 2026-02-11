@@ -6,7 +6,7 @@ import MainContent from "../components/MainContent";
 
 function DashboardLayout({ setIsLoggedIn }) {
   const [showSidebar, setShowSidebar] = useState(true);
-  const [activePage, setActivePage] = useState("dashboard");
+  const [activePage, setActivePage] = useState("Dashboard");
   const navigate = useNavigate();
 
   const toggleSidebar = () => {
