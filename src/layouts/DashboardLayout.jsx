@@ -7,7 +7,7 @@ import { productsData } from "../data/data";
 
 function DashboardLayout({ setIsLoggedIn }) {
   const [showSidebar, setShowSidebar] = useState(true);
-  const [activePage, setActivePage] = useState("dashboard");
+  const [activePage, setActivePage] = useState("Dashboard");
   const navigate = useNavigate();
 
   // Manage products in one place
