@@ -6,19 +6,34 @@ function LoginPage({ setIsLoggedIn }) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+const handleLogin = (e) => {
+  e.preventDefault();
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-
-    // Simple login check
-    if (email === "admin@admin.com" && password === "123456") {
+  fetch("http://127.0.0.1:8000/api/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+      "Authorization": `Bearer ${localStorage.getItem("token")}`,
+    },
+    body: JSON.stringify({
+      email,
+      password,
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      localStorage.setItem("token", data.access_token);
       localStorage.setItem("isLoggedIn", "true");
       setIsLoggedIn(true);
       navigate("/dashboard");
-    } else {
-      setError("Invalid email or password");
-    }
-  };
+      console.log("Logged in!", data);
+    })
+    .catch((error) => {
+      setError("Login failed. Please check your credentials and try again.");
+      console.log("Error:", error);
+    });
+};
 
   return (
     <div className="login-page">
@@ -33,7 +48,7 @@ function LoginPage({ setIsLoggedIn }) {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="admin@admin.com"
+              placeholder="email"
             />
           </div>
 
@@ -43,7 +58,7 @@ function LoginPage({ setIsLoggedIn }) {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="123456"
+              placeholder="password"
             />
           </div>
 
@@ -51,6 +66,11 @@ function LoginPage({ setIsLoggedIn }) {
             Login
           </button>
         </form>
+      </div>
+      <div className="register-link">
+        <p>
+          Don't have an account? <a href="/register">Register</a>
+        </p>
       </div>
     </div>
   );

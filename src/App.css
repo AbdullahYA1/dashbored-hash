@@ -40,3 +40,25 @@
 .read-the-docs {
   color: #888;
 }
+
+.register-link {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.register-link p {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+}
+
+.register-link a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.register-link a:hover {
+  color: #93c5fd;
+  text-decoration: underline;
+}
